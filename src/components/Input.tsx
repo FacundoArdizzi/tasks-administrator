@@ -19,7 +19,7 @@ const Input: React.FC = () => {
     }
 
     return (
-        <Stack width='100%' marginY={4} alignItems='center'>
+        <Stack width='100%' top='10vh' alignItems='center'>
             <Textarea 
                 width='50vw'
                 value={value}

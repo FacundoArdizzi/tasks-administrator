@@ -1,20 +1,19 @@
 import React from "react";
-import { Container, Stack } from '@chakra-ui/react'
+import { Box, Container, Stack } from '@chakra-ui/react'
 import { IState } from '../redux/constants/index'
 import NavBar from './NavBar'
 import Input from './Input'
 import { useSelector } from "react-redux";
 
 const Home: React.FC = () => {
-    const show = useSelector((state: IState) => state.show)
-    const todos = useSelector((state: IState) => state.todos)
-    const finished = useSelector((state: IState) => state.finishedTodo)
-    
     return (
-        <Stack>
-            <NavBar />
-            <Input />
-            <Container props={todos} />
+        <Stack width='100%'>
+            <Box position='fixed' zIndex='9999' width='100%' opacity='100%' >
+                <NavBar />
+            </Box>
+            <Box position='absolute' top='15vh' width='100%' >
+                <Input />
+            </Box>
         </Stack>
     )
 }

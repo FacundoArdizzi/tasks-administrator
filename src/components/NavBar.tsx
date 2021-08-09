@@ -11,7 +11,15 @@ const NavBar: React.FC = () => {
     }
 
     return (
-        <Stack direction='row' backgroundColor='whiteAlpha.800' paddingTop={5} borderBottomRadius='xl' shadow='md'>
+        <Stack 
+            direction='row' 
+            backgroundColor='white' 
+            paddingTop={5} 
+            borderBottomRadius='xl' 
+            shadow='md' 
+            width='100%'
+            opacity='100%'
+        >
             <Stack direction='row' width='fit-content' margin='auto'>
                 <Button
                     width='20vw' 
