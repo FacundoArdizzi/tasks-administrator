@@ -1,30 +1,44 @@
-import { Stack, Box, Text } from "@chakra-ui/layout";
-import React from "react";
+import React, { useState } from "react";
+import { Stack, Button } from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
+import { show } from "../redux/actions";
 
 const NavBar: React.FC = () => {
+    const dispatch = useDispatch()
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        dispatch(show(e.currentTarget.value))
+    }
+
     return (
         <Stack direction='row' backgroundColor='whiteAlpha.800' paddingTop={5} borderBottomRadius='xl' shadow='md'>
             <Stack direction='row' width='fit-content' margin='auto'>
-                <Box
+                <Button
                     width='20vw' 
                     textAlign='center' 
                     fontWeight='600' 
                     paddingBottom='1.5'
+                    background='transparent'
                     _hover={{cursor:'pointer', color:'primary' }}
                     _focus={{color:'primary'}}
+                    value='todos'
+                    onClick={handleClick}
                     >
                     TODO
-                </Box>
-                <Box
+                </Button>
+                <Button
                     width='20vw' 
                     textAlign='center' 
                     fontWeight='600' 
                     paddingBottom='1.5'
+                    background='transparent'
                     _hover={{cursor:'pointer', color:'primary' }}
                     _focus={{color:'primary'}}
+                    value='finishedTodos'
+                    onClick={handleClick}
                     >
                     DONE
-                </Box>
+                </Button>
             </Stack>
         </Stack>
     );

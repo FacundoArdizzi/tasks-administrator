@@ -1,13 +1,14 @@
-import { stat } from 'fs'
 import { Actions } from './actions/index'
-import { ADD_TODO, DELETE_TODO, FINISH_TODO, IState, ITodo } from './constants/index'
+import { ADD_TODO, DELETE_TODO, FINISH_TODO, IState, ITodo, SHOW } from './constants/index'
 
 const initialState: IState = {
     todos: [],
-    finishedTodo: []
+    finishedTodo: [],
+    show: '',
 }
 
 const rootReducer = (state = initialState, action: Actions): IState => {
+    console.log(state)
     switch(action.type) {
         case ADD_TODO: return {
             ...state, 
@@ -17,12 +18,14 @@ const rootReducer = (state = initialState, action: Actions): IState => {
             ...state,
             todos: state.todos.filter(todo => todo.id !== action.payload)
         }
-        /* case FINISH_TODO: 
-        let todo: ITodo = state.todos.find(t => t.id === action.payload)
-        return {
+        case FINISH_TODO: return {
+            ...state, 
+            finishedTodo: state.todos.filter((todo: ITodo) => todo.id === action.payload)
+        }
+        case SHOW: return {
             ...state,
-            finishedTodo: [...state.finishedTodo, todo]
-        } */
+            show: action.payload,
+        }
         default: return state
     }
 }

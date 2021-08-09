@@ -1,13 +1,12 @@
 import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
-import { Route } from 'react-router-dom'
 import theme from './theme';
-import NavBar from './components/NavBar';
+import Home from './components/Home'
 
 const App: React.FC = () => {
   return (
     <ChakraProvider theme={theme} >
-      <Route path='/' component={NavBar} />
+      <Home />
     </ChakraProvider>
   );
 }
