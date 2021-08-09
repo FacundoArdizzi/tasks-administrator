@@ -4,10 +4,11 @@ import { ITodo } from '../redux/constants';
 import Card from './Card';
 
 interface ContainerProps {
-    todos: ITodo[]
+    todos: ITodo[], 
+    status?: boolean,
 }
 
-const Container: React.FC <ContainerProps> = ({todos}) => {
+const Container: React.FC <ContainerProps> = ({todos, status}) => {
     console.log(todos)
     return (
         <Stack 
@@ -21,7 +22,7 @@ const Container: React.FC <ContainerProps> = ({todos}) => {
             top='40vh'
         >
             <ul>
-                {todos.reverse().map(todo => <Card key={todo.id} todo={todo} />)}
+                {todos.reverse().map(todo => <Card key={todo.id} todo={todo} status={status} />)}
             </ul>
         </Stack>
     )

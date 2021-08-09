@@ -1,15 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Stack, Button } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
-import { show } from "../redux/actions";
+import { Link } from "react-router-dom";
 
 const NavBar: React.FC = () => {
-    const dispatch = useDispatch()
-
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        dispatch(show(e.currentTarget.value))
-    }
-
     return (
         <Stack 
             direction='row' 
@@ -29,10 +22,8 @@ const NavBar: React.FC = () => {
                     background='transparent'
                     _hover={{cursor:'pointer', color:'primary' }}
                     _focus={{color:'primary'}}
-                    value='todos'
-                    onClick={handleClick}
                     >
-                    TODO
+                    <Link to='/'>TODO</Link>
                 </Button>
                 <Button
                     width='20vw' 
@@ -42,10 +33,8 @@ const NavBar: React.FC = () => {
                     background='transparent'
                     _hover={{cursor:'pointer', color:'primary' }}
                     _focus={{color:'primary'}}
-                    value='finishedTodos'
-                    onClick={handleClick}
                     >
-                    DONE
+                    <Link to='/done'>DONE</Link>
                 </Button>
             </Stack>
         </Stack>

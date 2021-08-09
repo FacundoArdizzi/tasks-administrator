@@ -3,19 +3,23 @@ import { Stack, Text, Button, Icon, Switch, StackDivider } from '@chakra-ui/reac
 import { useDispatch } from 'react-redux';
 import { ITodo } from '../redux/constants';
 import { FaTrash } from 'react-icons/fa'
-import { finishTodo } from '../redux/actions';
+import { finishTodo, deleteTodo, unfinishTodo } from '../redux/actions';
 
 interface props {
     key: number, 
     todo: ITodo,
+    status?: boolean,
 }
 
-const Card: React.FC <props> = ({todo}) => {
+const Card: React.FC <props> = ({todo, status}) => {
     const dispatch = useDispatch()
 
     const handleSwitch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log('yo funciono')
-        dispatch(finishTodo(todo.id))
+        status === true ? dispatch(unfinishTodo(todo.id)) : dispatch(finishTodo(todo.id))
+    }
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        dispatch(deleteTodo(todo.id))
     }
 
     return (
@@ -33,12 +37,13 @@ const Card: React.FC <props> = ({todo}) => {
             <Stack direction='row' divider={<StackDivider/>} alignItems='center' width='10vw' justifyContent='space-around' >
                 <Stack>
                     <Text>Done</Text>
-                    <Switch color='primary' size='md' onFocus={handleSwitch}/>
+                    <Switch isChecked={status} color='primary' size='md' onChange={()=>setTimeout(handleSwitch, 100)}/>
                 </Stack>
                 <Button 
                     width='fit-content' 
                     background='transparent' 
                     _hover={{color: '#C53030',}} 
+                    onClick={handleClick}
                 ><Icon as={FaTrash} /></Button>
             </Stack>
         </Stack>
