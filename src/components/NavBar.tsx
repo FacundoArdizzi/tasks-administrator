@@ -18,7 +18,7 @@ const NavBar: React.FC = () => {
             opacity='100%'
         >
             <Stack direction='row' width='fit-content' margin='auto'>
-                <Link to='/'><Button
+                <Link to='/tasks-administrator/'><Button
                     width='20vw' 
                     textAlign='center' 
                     fontWeight='600' 
@@ -30,7 +30,7 @@ const NavBar: React.FC = () => {
                     >
                     PENDIENT
                 </Button></Link>
-                <Link to='/completed'><Button
+                <Link to='/tasks-administrator/completed'><Button
                     width='20vw' 
                     textAlign='center' 
                     fontWeight='600' 
