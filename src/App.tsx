@@ -13,8 +13,8 @@ const App: React.FC = () => {
   return (
     <ChakraProvider theme={theme} >
       <Route path='/' component={Home} />
-      <Route path='/' exact><Container todos={t} /></Route>
-      <Route path='/completed'><Container todos={t} /></Route>
+      <Route path='/tasks-administrator/' exact><Container todos={t} /></Route>
+      <Route path='/tasks-administrator/completed'><Container todos={t} /></Route>
     </ChakraProvider>
   );
 }
