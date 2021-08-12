@@ -1,8 +1,12 @@
 import React from "react";
 import { Stack, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { show } from "../redux/actions";
 
 const NavBar: React.FC = () => {
+    const dispatch = useDispatch()
+
     return (
         <Stack 
             direction='row' 
@@ -14,7 +18,19 @@ const NavBar: React.FC = () => {
             opacity='100%'
         >
             <Stack direction='row' width='fit-content' margin='auto'>
-                <Button
+                <Link to='/'><Button
+                    width='20vw' 
+                    textAlign='center' 
+                    fontWeight='600' 
+                    paddingBottom='1.5'
+                    background='transparent'
+                    _hover={{cursor:'pointer', color:'primary' }}
+                    _focus={{color:'primary'}} 
+                    onClick={() => dispatch(show('pendient'))}
+                    >
+                    PENDIENT
+                </Button></Link>
+                <Link to='/completed'><Button
                     width='20vw' 
                     textAlign='center' 
                     fontWeight='600' 
@@ -22,20 +38,9 @@ const NavBar: React.FC = () => {
                     background='transparent'
                     _hover={{cursor:'pointer', color:'primary' }}
                     _focus={{color:'primary'}}
-                    >
-                    <Link to='/'>TODO</Link>
-                </Button>
-                <Button
-                    width='20vw' 
-                    textAlign='center' 
-                    fontWeight='600' 
-                    paddingBottom='1.5'
-                    background='transparent'
-                    _hover={{cursor:'pointer', color:'primary' }}
-                    _focus={{color:'primary'}}
-                    >
-                    <Link to='/done'>DONE</Link>
-                </Button>
+                    onClick={() => dispatch(show('completed'))}
+                    >COMPLETED
+                </Button></Link>
             </Stack>
         </Stack>
     );

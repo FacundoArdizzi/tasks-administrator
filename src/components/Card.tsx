@@ -8,17 +8,17 @@ import { finishTodo, deleteTodo, unfinishTodo } from '../redux/actions';
 interface props {
     key: number, 
     todo: ITodo,
-    status?: boolean,
 }
 
-const Card: React.FC <props> = ({todo, status}) => {
+const Card: React.FC <props> = ({todo}) => {
     const dispatch = useDispatch()
+    const t = todo
 
-    const handleSwitch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        status === true ? dispatch(unfinishTodo(todo.id)) : dispatch(finishTodo(todo.id))
+    const handleSwitch = () => {
+        t.completed === false ? dispatch(finishTodo(t.id)) : dispatch(unfinishTodo(t.id))
     }
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleClick = () => {
         dispatch(deleteTodo(todo.id))
     }
 
@@ -35,9 +35,9 @@ const Card: React.FC <props> = ({todo, status}) => {
         >
             <Text width='55vw'>{todo.content}</Text>
             <Stack direction='row' divider={<StackDivider/>} alignItems='center' width='10vw' justifyContent='space-around' >
-                <Stack>
+                <Stack alignItems='center'>
                     <Text>Done</Text>
-                    <Switch isChecked={status} color='primary' size='md' onChange={()=>setTimeout(handleSwitch, 100)}/>
+                    <Switch defaultChecked={todo.completed} color='primary'  onChange={() => setTimeout(handleSwitch, 700)} />
                 </Stack>
                 <Button 
                     width='fit-content' 

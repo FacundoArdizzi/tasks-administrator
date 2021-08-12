@@ -1,11 +1,12 @@
 export interface ITodo {
     content: string,
+    completed: boolean,
     id: number,
 }
 
 export interface IState {
-    todos: ITodo[], 
-    finishedTodos: ITodo[],
+    todos: ITodo[],
+    show: string,
 }
 
 export const ADD_TODO = 'ADD_TODO'
@@ -19,3 +20,6 @@ export type FINISH_TODO = typeof FINISH_TODO
 
 export const UNFINISH_TODO = 'UNFINISH_TODO'
 export type UNFINISH_TODO = typeof UNFINISH_TODO
+
+export const SHOW = 'SHOW'
+export type SHOW = typeof SHOW

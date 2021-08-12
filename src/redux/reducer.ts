@@ -1,37 +1,46 @@
-import { Actions } from './actions/index'
-import { ADD_TODO, DELETE_TODO, FINISH_TODO, IState, ITodo, UNFINISH_TODO } from './constants/index'
+import { Actions } from './actions'
+import { ADD_TODO, DELETE_TODO, FINISH_TODO, ITodo, UNFINISH_TODO, IState, SHOW } from './constants'
 
 const initialState: IState = {
     todos: [],
-    finishedTodos: [],
+    show: 'pendient',
 }
 
-const rootReducer = (state = initialState, action: Actions): IState => {
-    switch(action.type) {
-        case ADD_TODO: return <IState> {
+const rootReducer = (state = initialState, action: Actions) => {
+    switch (action.type) {
+        case ADD_TODO: return {
             ...state, 
             todos: [action.payload, ...state.todos]
+        }        
+        case DELETE_TODO: return {
+            ...state, 
+            todos: state.todos.filter((todo: ITodo) => todo.id !== action.payload)
         }
-        case DELETE_TODO: return <IState> {
+        case FINISH_TODO: return {
             ...state,
-            todos: state.todos.filter((todo: ITodo) => todo.id !== action.payload),
-            finishedTodos: state.finishedTodos.filter((todo: ITodo) => todo.id !== action.payload)
+            todos: state.todos.map((todo: ITodo) => 
+                todo.id === action.payload ? 
+                {
+                    ...todo,
+                    completed: true,
+                } : todo
+            )
         }
-        case FINISH_TODO: 
-        let todo = state.todos.find((todo: ITodo) => todo.id === action.payload)
-        return <IState> {
+        case UNFINISH_TODO: return {
             ...state, 
-            todos: state.todos.filter((todo: ITodo) => todo.id !== action.payload),
-            finishedTodos: [todo, ...state.finishedTodos]
+            todos: state.todos.map((todo: ITodo) => 
+                todo.id === action.payload ? 
+                {
+                    ...todo, 
+                    completed: false, 
+                } : todo
+            )
         }
-        case UNFINISH_TODO: 
-        let t = state.finishedTodos.find((todo: ITodo) => todo.id === action.payload)
-        return <IState> {
+        case SHOW: return {
             ...state, 
-            todos: [t, ...state.todos],
-            finishedTodos: state.finishedTodos.filter((todo: ITodo) => todo.id !== action.payload)
+            show: action.payload
         }
-        default: return state
+        default: return state 
     }
 }
 

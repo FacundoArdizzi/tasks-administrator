@@ -1,15 +1,16 @@
 import React from 'react';
 import { Stack } from '@chakra-ui/react';
-import { ITodo } from '../redux/constants';
+import { ITodo, IState } from '../redux/constants';
+import { useSelector } from 'react-redux';
 import Card from './Card';
 
 interface ContainerProps {
     todos: ITodo[], 
-    status?: boolean,
 }
 
-const Container: React.FC <ContainerProps> = ({todos, status}) => {
-    console.log(todos)
+const Container: React.FC <ContainerProps> = ({todos}) => {
+    const s = useSelector((state: IState) => state.show)
+
     return (
         <Stack 
             spacing={2} 
@@ -22,7 +23,10 @@ const Container: React.FC <ContainerProps> = ({todos, status}) => {
             top='40vh'
         >
             <ul>
-                {todos.reverse().map(todo => <Card key={todo.id} todo={todo} status={status} />)}
+            {
+                s === 'completed' ? todos.filter(t => t.completed === true).map(todo => <Card key={todo.id} todo={todo} />) :
+                todos.filter(t => t.completed === false).map(todo => <Card key={todo.id} todo={todo} />)
+            }
             </ul>
         </Stack>
     )

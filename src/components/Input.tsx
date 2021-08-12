@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Stack, Textarea, } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../redux/actions/index'
+import { addTodo } from '../redux/actions'
 
 const Input: React.FC = () => {
     const dispatch = useDispatch()
@@ -14,7 +14,7 @@ const Input: React.FC = () => {
 
     const handleSubmit = () => {
         let id = Date.now()
-        dispatch(addTodo({content: value, id}))
+        dispatch(addTodo({content: value, completed: false, id}))
         setValue('')
     }
 

@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, FINISH_TODO, UNFINISH_TODO, ITodo } from "../constants";
+import { ADD_TODO, DELETE_TODO, FINISH_TODO, UNFINISH_TODO, ITodo, SHOW } from "./constants";
 
 export interface IAddTodoAction {
     type: ADD_TODO, 
@@ -20,20 +20,29 @@ export interface IUnfinishTodoAction {
     payload: number,
 }
 
-export type Actions = IAddTodoAction | IDeleteTodoAction |   IFinishTodoAction | IUnfinishTodoAction
+export interface IShowAction {
+    type: SHOW,
+    payload: string,
+}
+
+export type Actions = IAddTodoAction | IDeleteTodoAction |   IFinishTodoAction | IUnfinishTodoAction | IShowAction
 
 export const addTodo = (payload: ITodo): IAddTodoAction => {
-    return { type: ADD_TODO, payload: payload}
+    return { type: ADD_TODO, payload: payload }
 }
 
 export const deleteTodo = (num: number): IDeleteTodoAction => {
-    return { type: DELETE_TODO, payload: num}
+    return { type: DELETE_TODO, payload: num }
 }
 
 export const finishTodo = (num: number): IFinishTodoAction => {
-    return { type: FINISH_TODO, payload: num}
+    return { type: FINISH_TODO, payload: num } 
 }
 
 export const unfinishTodo = (num: number): IUnfinishTodoAction => {
-    return { type: UNFINISH_TODO, payload: num}
+    return { type: UNFINISH_TODO, payload: num }
+}
+
+export const show = (payload: string): IShowAction => {
+    return { type: SHOW, payload }
 }
