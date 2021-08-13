@@ -14,7 +14,8 @@ const Input: React.FC = () => {
 
     const handleSubmit = () => {
         let id = Date.now()
-        dispatch(addTodo({content: value, completed: false, id}))
+        value.length < 0 ? dispatch(addTodo({content: value, completed: false, id})) 
+        : alert(`Opps! Looks like you haven't typed anything :(`)
         setValue('')
     }
 
@@ -36,6 +37,7 @@ const Input: React.FC = () => {
                 variant='outline'
                 width='20vw'
                 _hover={{background:'green.400', color: 'white'}}
+                _focus={{outline: 'none'}}
             >Add</Button>
         </Stack>
     )

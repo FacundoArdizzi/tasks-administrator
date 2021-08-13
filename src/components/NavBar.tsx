@@ -19,7 +19,7 @@ const NavBar: React.FC = () => {
         >
             <Stack direction='row' width='fit-content' margin='auto'>
                 <Link to='/tasks-administrator/'><Button
-                    width='20vw' 
+                    width='25vw' 
                     textAlign='center' 
                     fontWeight='600' 
                     paddingBottom='1.5'
@@ -31,7 +31,7 @@ const NavBar: React.FC = () => {
                     PENDIENT
                 </Button></Link>
                 <Link to='/tasks-administrator/completed'><Button
-                    width='20vw' 
+                    width='25vw' 
                     textAlign='center' 
                     fontWeight='600' 
                     paddingBottom='1.5'
