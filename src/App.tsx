@@ -1,11 +1,12 @@
 import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import { useSelector } from 'react-redux'
+import { Route } from 'react-router';
+import { IState } from './redux/constants';
 import theme from './theme';
 import Home from './components/Home'
 import Container from './components/Container'
-import { Route } from 'react-router';
-import { IState, ITodo } from './redux/constants';
+
 
 const App: React.FC = () => {
   const t = useSelector((state: IState) => state.todos)

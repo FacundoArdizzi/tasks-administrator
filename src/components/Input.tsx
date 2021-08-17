@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Stack, Textarea, Alert, AlertIcon } from '@chakra-ui/react'
+import { Button, Stack, Textarea } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../redux/actions'
 
