@@ -16,7 +16,6 @@ const Container: React.FC <ContainerProps> = ({todos}) => {
             spacing={2} 
             background='white' 
             borderRadius='md' 
-            padding={2} 
             height='100vh'
             width='100%'
             position='absolute'

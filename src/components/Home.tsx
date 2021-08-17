@@ -1,9 +1,7 @@
 import React from "react";
-import { Box, Container, Stack } from '@chakra-ui/react'
-import { IState } from '../redux/constants'
+import { Box, Stack } from '@chakra-ui/react'
 import NavBar from './NavBar'
 import Input from './Input'
-import { useSelector } from "react-redux";
 
 const Home: React.FC = () => {
     return (

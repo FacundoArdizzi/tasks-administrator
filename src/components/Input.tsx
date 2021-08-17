@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Stack, Textarea, } from '@chakra-ui/react'
+import { Button, Stack, Textarea, Alert, AlertIcon } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../redux/actions'
 
@@ -14,7 +14,7 @@ const Input: React.FC = () => {
 
     const handleSubmit = () => {
         let id = Date.now()
-        value.length < 0 ? dispatch(addTodo({content: value, completed: false, id})) 
+        value.length > 0 ? dispatch(addTodo({content: value, completed: false, id})) 
         : alert(`Opps! Looks like you haven't typed anything :(`)
         setValue('')
     }

@@ -10,19 +10,18 @@ const NavBar: React.FC = () => {
     return (
         <Stack 
             direction='row' 
+            alignItems='center'
             backgroundColor='white' 
-            paddingTop={5} 
             borderBottomRadius='xl' 
             shadow='md' 
             width='100%'
-            opacity='100%'
+            height='10vh'
         >
-            <Stack direction='row' width='fit-content' margin='auto'>
+            <Stack direction='row' width='100vw' justifyContent='center' margin='auto'>
                 <Link to='/tasks-administrator/'><Button
                     width='25vw' 
                     textAlign='center' 
                     fontWeight='600' 
-                    paddingBottom='1.5'
                     background='transparent'
                     _hover={{cursor:'pointer', color:'primary' }}
                     _focus={{color:'primary'}} 
@@ -34,7 +33,6 @@ const NavBar: React.FC = () => {
                     width='25vw' 
                     textAlign='center' 
                     fontWeight='600' 
-                    paddingBottom='1.5'
                     background='transparent'
                     _hover={{cursor:'pointer', color:'primary' }}
                     _focus={{color:'primary'}}
